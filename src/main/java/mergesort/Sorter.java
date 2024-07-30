@@ -20,7 +20,9 @@ public class Sorter implements Callable<List<Integer>> {
 
     @Override
     public List<Integer> call() throws Exception {
-        if(arrayToSort.size() <= 1) return arrayToSort;
+        if(arrayToSort.size() <= 1) {
+            return arrayToSort;
+        }
 
         int mid = arrayToSort.size() / 2;
 
@@ -29,7 +31,7 @@ public class Sorter implements Callable<List<Integer>> {
             leftArrayToSort.add(arrayToSort.get(i));
         }
         List<Integer> rightArrayToSort = new ArrayList<>();
-        for(int i = mid + 1; i < mid; i++) {
+        for(int i = mid; i < arrayToSort.size(); i++) {
             rightArrayToSort.add(arrayToSort.get(i));
         }
         //make object of our tasks
