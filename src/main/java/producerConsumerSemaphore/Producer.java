@@ -3,7 +3,7 @@ package producerConsumerSemaphore;
 import java.util.Queue;
 import java.util.concurrent.Semaphore;
 
-public class Producer implements Runnable{
+public class Producer  implements Runnable {
     private Queue<Object> queue;
     private Semaphore producerSemaphore;
     private Semaphore consumerSemaphore;
@@ -13,7 +13,7 @@ public class Producer implements Runnable{
         this.consumerSemaphore = consumerSemaphore;
     }
     @Override
-    public void run() {
+    public void run ()  {
         while(true){
             try{
              producerSemaphore.acquire();
@@ -21,6 +21,7 @@ public class Producer implements Runnable{
                 queue.add(new Object());
             }catch (InterruptedException e){
                 throw new RuntimeException(e);
+
             }
             consumerSemaphore.release();
         }
